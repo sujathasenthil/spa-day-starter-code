@@ -6,10 +6,42 @@
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
 </head>
 <body>
-<h1>My Super Fancy Spa</h1>
-<div id = "clientProfile">
-</div>
-<div id = "servicesMenu">
-</div>
+<b><h1>My Super Fancy Spa</h1></b>
+
+    <div id = "clientProfile">
+
+        <b><h2><ul>My Profile</ul></h2></b>
+        <h2>
+        <p th:text="${name}"></p>
+        <p th:text="${skintype}"></p>
+            <p th:text="${manipedi}"></p></h2>
+        <br />
+            <h2><b>Menu Of Available Services</b></h2>
+        <br />
+    </div>
+    <div>
+        <h2><b>Facial Treatments</b></h2>
+        <h3>The facial treatments below are recommended </h3>
+        <h3>by our estheticians for your given skin type.</h3>
+        <br />
+
+        <div id = "servicesMenu">
+            <th:block th:each = "aFacial : ${appropriateFacials}">
+           <h3> <li th:text = "${aFacial}"></li></h3>
+            </th:block>
+        </div>
+
+        <div th:if = '${manipedi.equals("manicure")}'>
+            <b><h2>Manicure</h2></b>
+            <br />
+             <h2 th:replace = "fragments :: manicureDescription"></h2>
+        </div>
+        <div th:if = '${manipedi.equals("pedicure")}'>
+            <b><h2>Pedicure</h2></b>
+            <br />
+            <h2 th:replace = "fragments :: pedicureDescription"></h2>
+        </div>
+
+        </div>
 </body>
 </html>
