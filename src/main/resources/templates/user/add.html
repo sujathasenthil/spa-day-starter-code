@@ -6,33 +6,38 @@
     <title>Sign Up</title>
 </head>
 <body>
-<form method = 'post' action="add">
+<form method = 'post' action="index">
     <div class="form-group">
-    <label>UserName:
-        <input type="text" name="username" th:value="${username}" class="form-control">
+        <label>
+            Username:
+            <input th:field="${user.username}" th:value="${username}" class="form-control">
+        </label>
+        <p class="error" th:errors="${user.username}"></p>
+    </div>
+    <div class="form-group">
+        <label>
+            Email:
+            <input th:field="${user.email}" th:value = "${email}" class="form-control">
+        </label>
+        <p class="error" th:errors="${user.email}"></p>
+    </div>
+    <div class="form-group">
+        <label>
+            Password:
+            <input th:field="${user.password}" class="form-control">
+        </label>
+        <p class="error" th:errors="${user.password}"></p>
+    </div>
+    <div class="form-group">
+        <label>
+            Verify Password:
+            <input th:field="${user.verifyPassword}" class="form-control" >
+        </label>
+        <p class="error" th:errors="${user.verifyPassword}"></p>
+    </div>
+    <!--        <p th:text="${error}"></p>-->
 
-    </label>
-    </div>
-    <div class="form-group">
-    <label>Email:
-        <input type="text" name="email"  th:value="${email}" class="form-control">
-
-    </label>
-    </div>
-    <div class="form-group">
-    <label>Password:
-        <input type="password" name="password"  th:value="${password}" class="form-control">
-
-    </label>
-    </div>
-    <div class="form-group">
-    <label>
-        Verify Password:
-        <input type = 'password' name = 'verify' class="form-control">
-    </label>
-    </div>
-    <p th:text="${error}"></p>
-    <input text="submit" type="submit" class="btn btn-success">
-</form>
+        <input type = 'submit' value = 'Sign Up'>
+    </form>
 </body>
 </html>
