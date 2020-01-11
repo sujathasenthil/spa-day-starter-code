@@ -16,8 +16,8 @@ import javax.validation.Valid;
 public class UserController {
 
     @GetMapping("add")
-    public String  displayAddUserForm(Model model){
-      model.addAttribute(new User());
+    public String displayAddUserForm(Model model) {
+        model.addAttribute(new User());
         return "/user/add";
     }
 
@@ -37,15 +37,23 @@ public class UserController {
 //            model.addAttribute("email", user.getEmail());
 //            return "/user/add";
 
-            if(errors.hasErrors()){
+        if (errors.hasErrors()) {
             //    model.addAttribute("user","user");
-                return "/user/add";
-            }
-            else
-            {
-                model.addAttribute("name", user.getUsername());
-                return "/user/index";
-            }
+            return "/user/add";
+        } else {
+            model.addAttribute("name", user.getUsername());
+            return "/user/index";
+        }
 
+    }
+
+    @GetMapping("")
+    public String displayIndexForm(Model model, Errors errors) {
+        if (errors.hasErrors()) {
+          //  model.addAttribute("title", "index");
+            return "/user/index";
+        } else {
+            return "redirect:";
         }
     }
+}

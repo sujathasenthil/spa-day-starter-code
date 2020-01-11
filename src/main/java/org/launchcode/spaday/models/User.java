@@ -49,6 +49,7 @@ public class User {
     }
 
     public void setPassword(String password) {
+        this.password = password;
         checkPassword();
     }
 
@@ -57,10 +58,12 @@ public class User {
     }
 
     public void setVerifyPassword(String verifyPassword) {
+        this.verifyPassword = verifyPassword;
         checkPassword();
     }
+
     private void checkPassword(){
-        if((this.password != null) && (this.verifyPassword != null) && ( (this.password).toLowerCase().equals((this.verifyPassword).toLowerCase()) ))
+       if((this.password != null) && !(this.password).equals(this.verifyPassword) )
             this.verifyPassword = null;
     }
 }
